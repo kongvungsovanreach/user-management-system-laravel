@@ -1,0 +1,93 @@
+/* MASTER PAGE STYLE */
+#logo-text {
+    padding-left: 25px;
+    font-weight: bold;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.page-footer {
+    background-color: #fff;;
+}
+
+#footer-div {
+    background-color: #ee6e73 ;
+}
+
+
+/* GLOBAL CSS STYLE */
+.btn-bottom {
+    margin:20px 0;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+
+
+/* INDEX PAGE CSS STYLE */
+#top_div {
+    margin-top: 20px;
+    padding: 0;
+}
+
+#top_div > div {
+    padding: 0;
+}
+
+#front_profile {
+    width: 130px;
+    height: 80px;
+}
+
+.page-link {
+    padding: 15px 10px 1px 10px;
+    color: #fff;
+}
+
+#total_user_label {
+    float: right;
+    font-weight: bold;
+}
+
+#table_footer {
+    border-bottom: none;
+}
+
+#search_form {
+    float: right;
+}
+
+#search_btn {
+    margin: 10px 0 0 0;
+    float: right;
+}
+    
+#add_btn {
+    margin: 10px 0 0 0;
+}
+
+
+/* VIEW PAGE CSS STYLE */
+
+#view_profile {
+    height: 320px;
+    width: 320px;
+    border: 2px solid black;
+    border-radius: 50%;
+    margin: 10px 0;
+    float: right;
+}
+
+#view_table tr {
+    height: 80px;
+}
+
+#view_info {
+    margin-top: 10px;
+}
