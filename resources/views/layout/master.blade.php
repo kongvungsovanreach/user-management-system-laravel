@@ -18,7 +18,10 @@
   <script>
     $(document).ready(function () {
       $('select').formSelect();
-      $('.datepicker').datepicker();
+      $('.datepicker').datepicker({
+        "format" :'yyyy-mm-dd',
+        "autoClose": true
+      });
     });
     function prompt_alert_delete(id, title, subtitle, success, nosuccess, url) {
       swal({
@@ -83,6 +86,7 @@
           <a href="/" class="brand-logo" id="logo-text">User Management System</a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="sass.html">Home</a></li>
+            <li><a href="{{route('user.deleteAll')}}">Delete All</a></li>
             <li><a href="badges.html">Contact Us</a></li>
             <li><a href="collapsible.html">About Us</a></li>
           </ul>

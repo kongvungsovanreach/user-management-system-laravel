@@ -16,30 +16,31 @@
             </a>
         </div>
         <div class="col m10">
-            <form action="" method="GET" id="search_form">
+            <form action="{{route('user.search')}}" method="GET" id="search_form">
                <div class="col m2">
-                    <input type="text" class="datepicker" placeholder="Start Date" name="start_date">
+                    <input type="text" value="{{isset($startDate)?$startDate : ''}}" class="datepicker" placeholder="Start Date" name="start_date">
                </div>
                <div class="col m2">
-                    <input type="text" class="datepicker" placeholder="End Date" name="end_date">
+                    <input type="text" value="{{isset($endDate)?$endDate : ''}}" class="datepicker" placeholder="End Date" name="end_date">
                </div>
                <div class="col m4">
-                    <input type="text" name="keyword" placeholder="Keyword..." autocomplete=off>
+                    <input type="text" value="{{isset($keyword)?$keyword : ''}}" name="keyword" placeholder="Keyword..." autocomplete=off>
                 </div>
                <div class="col m2">
-                    <select>
-                            <option value="id">Title</option>
-                            <option value="name">Option 2</option>
-                            <option value="email">Option 3</option>
-                        </select>
-                        <label>Materialize Select</label>
+                    <select name="filter">
+                        @foreach($filters as $key => $value)
+                            <option value="{{$key}}"
+                                @if($filter == $key)
+                                    selected = 'selected'
+                                @endif
+                            >{{$value}}</option>
+                        @endforeach
+                    </select>
                </div>
                <div class="col m2" id="search_btn">
-                    <a href="{{route('user.insertForm')}}">
-                        <button class="btn waves-effect waves-light" type="submit" name="action">Search
-                            <i class="material-icons right">search</i>
-                        </button>
-                    </a>
+                    <button class="btn waves-effect waves-light" type="submit" >Search
+                        <i class="material-icons right">search</i>
+                    </button>
                 </div>
             </form>
         </div>
@@ -61,7 +62,7 @@
                     <td>{{$user->name}}</td>
                     <td>{{$user->email}}</td>
                     <td>{{$user->phone_number}}</td>
-                    <td><img src="/{{$user->profile}}" alt="Demo Text" id="front_profile"></td>
+                    <td><img src="/storage/{{$user->profile}}" alt="Demo Text" id="front_profile"></td>
                     <td>{{$user->created_at}}</td>
                     <td>
                         <a href="{{route('user.view',$user->id)}}">
@@ -81,8 +82,8 @@
                 </tr> 
             @endforeach
             <tr id="table_footer">
-                <td colspan="6">{{$users->links()}}</td>
-                <td id="total_user_label">Total User: <span>{{count($users)}} users</span></td>
+                <td colspan="6">{{$users->appends(request()->all())->links()}}</td>
+                <td id="total_user_label">Total User: <span>{{$count}} users</span></td>
             </tr>
         @endif
     </table>

@@ -7,9 +7,13 @@ use App\UserModel;
 
 class UserModelController extends Controller
 {
+    private $filters = ["id"=>"ID", "name"=>"Name", "email"=>"Email", "phone_number"=>"Phone Number"];
     function index(){
         $users = UserModel::paginate(7);
-        return view("index", compact("users"));
+        $count = UserModel::all()->count();
+        $filters = $this->filters;
+        $filter = "name";
+        return view("index", compact("users","filters", "filter", "count"));
     }
 
     function view($id){
@@ -25,14 +29,20 @@ class UserModelController extends Controller
         $profile = FileUploadController::uploadSingleFile($request->file("profile"));;
         $user = new UserModel();
         $user->fill($request->all());
-        $user -> profile = $profile;
-        $user -> save();
-        return redirect()->route("user.index");
+        $user -> profile = str_replace("public/uploads", "", $profile);
+        echo $user -> profile;
+        // $user -> save();
+        // return redirect()->route("user.index");
     }
 
     function delete($id){
         UserModel::destroy($id);
         return redirect()->back();
+    }
+
+    function deleteAll(){
+        UserModel::truncate();
+        return redirect()->route("user.index");
     }
 
     function updateForm($id){
@@ -52,5 +62,27 @@ class UserModelController extends Controller
             $dbUser->save();
         }
         return redirect()->route("user.index");
+    }
+
+    function search(Request $request){
+        $startDate = $request->start_date;
+        $endDate = $request->end_date;
+        $keyword = $request->keyword;
+        $filter = $request->filter;
+        $users = [];
+        $count = 0;
+        if($startDate == "" || $endDate == ""){
+            $users = UserModel::where($filter,"like","%".$keyword."%")->paginate(5);
+            $count = UserModel::where($filter,"like","%".$keyword."%")->get()->count();
+        }else if($keyword=="" && ($startDate == "" || $endDate == "")){
+            $users = UserModel::wherebetween("created_at",[$startDate, $endDate])->paginate(5);
+            $count = UserModel::wherebetween("created_at",[$startDate, $endDate])->get()->count();
+        }
+        else {
+            $users = UserModel::where($filter,"like","%".$keyword."%")->wherebetween("created_at",[$startDate, $endDate])->paginate(5);
+            $count = UserModel::where($filter,"like","%".$keyword."%")->wherebetween("created_at",[$startDate, $endDate])->get()->count();
+        }
+        $filters = $this->filters;
+        return view("index", compact("users","filters", "filter", "keyword", "startDate", "endDate", "count"));
     }
 }

@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 class FileUploadController extends Controller
 {
     static function upload($file){
-        $filepath = $file->move("upload", $file->getClientOriginalName());
+        $uploadFolder = "public/uploads";
+        $filepath = $file->store($uploadFolder);
         return $filepath;
     }
 
