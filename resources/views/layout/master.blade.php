@@ -30,6 +30,7 @@
         icon: "warning",
         buttons: true,
         dangerMode: true,
+        buttons: ['@lang('message.cancel')', '@lang('message.yes')'],
       })
         .then((willDelete) => {
           if (willDelete) {
@@ -48,6 +49,7 @@
         icon: "warning",
         buttons: true,
         dangerMode: true,
+        buttons: ['@lang('message.cancel')', '@lang('message.yes')'],
       })
         .then((willDelete) => {
           if (willDelete) {
@@ -83,12 +85,20 @@
     <div class="row">
       <nav class="col m10 offset-m1">
         <div class="nav-wrapper">
-          <a href="/" class="brand-logo" id="logo-text">User Management System</a>
+          <a href="/" class="brand-logo" id="logo-text">@lang('message.ums')</a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="sass.html">Home</a></li>
-            <li><a href="{{route('user.deleteAll')}}">Delete All</a></li>
-            <li><a href="badges.html">Contact Us</a></li>
-            <li><a href="collapsible.html">About Us</a></li>
+            <li><a href="/">@lang('message.home')</a></li>
+            <li><a href="{{route('user.deleteAll')}}">@lang('message.delete_all')</a></li>
+            <li><a href="/contactUs">@lang('message.contact_us')</a></li>
+            <li><a href="/aboutUs">@lang('message.about_us')</a></li>
+            <li><a href="/khmer" id="flag-link">
+                <img src="/image/cambodia.png" alt="" class="img-flag">
+              </a>
+            </li>
+            <li><a href="/english" id="flag-link">
+                <img src="/image/us.png" alt="" class="img-flag">
+              </a>
+            </li>
           </ul>
         </div>
       </nav>
@@ -105,17 +115,15 @@
         <div class="container">
           <div class="row">
             <div class="col l6 s12">
-              <h5 class="white-text">User Management System</h5>
-              <p class="grey-text text-lighten-4">This is the simple User Management System that was built using
-                laravel framework and using blade as a template engine in the process of developing this website.
-                Thanks!</p>
+              <h5 class="white-text">@lang('message.ums')</h5>
+              <p class="grey-text text-lighten-4">@lang('message.ums.footer')</p>
             </div>
             <div class="col l4 offset-l2 s12">
-              <h5 class="white-text">Some Useful Links</h5>
+              <h5 class="white-text">@lang('message.useful_link')</h5>
               <ul>
-                <li><a class="grey-text text-lighten-3" href="#!">Home</a></li>
-                <li><a class="grey-text text-lighten-3" href="#!">About Us</a></li>
-                <li><a class="grey-text text-lighten-3" href="#!">Contact Us</a></li>
+                <li><a class="grey-text text-lighten-3" href="#!">@lang('message.home')</a></li>
+                <li><a class="grey-text text-lighten-3" href="#!">@lang('message.about_us')</a></li>
+                <li><a class="grey-text text-lighten-3" href="#!">@lang('message.contact_us')</a></li>
                 <li><a class="grey-text text-lighten-3" href="#!">FAQ</a></li>
               </ul>
             </div>
@@ -123,7 +131,7 @@
         </div>
         <div class="footer-copyright">
           <div class="container">
-            © 2019 Copyright Text
+            @lang('message.copyright')
             <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
           </div>
         </div>

@@ -9,3 +9,5 @@ Route::get("/deleteAll", "UserModelController@deleteAll")->name("user.deleteAll"
 Route::get("/update/{id}", "UserModelController@updateForm")->name("user.updateForm");
 Route::put("/update/{id}", "UserModelController@updateAction")->name("user.updateAction");
 Route::get("/search", "UserModelController@search")->name("user.search");
+Route::get("/khmer", "UserModelController@khmer");
+Route::get("/english", "UserModelController@english");

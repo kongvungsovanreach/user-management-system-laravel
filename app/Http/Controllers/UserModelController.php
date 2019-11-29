@@ -6,9 +6,10 @@ use Illuminate\Http\Request;
 use App\UserModel;
 
 class UserModelController extends Controller
-{
-    private $filters = ["id"=>"ID", "name"=>"Name", "email"=>"Email", "phone_number"=>"Phone Number"];
+{   
+    private $filters = ["id","name","email","phone_number"];
     function index(){
+       
         $users = UserModel::paginate(7);
         $count = UserModel::all()->count();
         $filters = $this->filters;
@@ -84,5 +85,17 @@ class UserModelController extends Controller
         }
         $filters = $this->filters;
         return view("index", compact("users","filters", "filter", "keyword", "startDate", "endDate", "count"));
+    }
+
+    function khmer(){
+        \App::setLocale("kh");
+        \Session::put("locale", "kh");
+        return redirect()->back();
+    }
+
+    function english(){
+        \App::setLocale("en");
+        \Session::put("locale", "en");
+        return redirect()->back();
     }
 }

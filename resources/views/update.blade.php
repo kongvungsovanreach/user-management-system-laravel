@@ -21,7 +21,7 @@
         <div class="file-field input-field">
             
           <div class="btn">
-            <span>File</span>
+            <span>@lang('message.profile')</span>
             <input type="file" name="profile" value="" onchange="pick_image(this)">
           </div>
           <div class="file-path-wrapper">
@@ -30,17 +30,17 @@
         </div>
         <div class="btn-bottom">
             <a href="{{route('user.index')}}">
-                <button class="btn waves-effect waves-light" type="button" name="back">Go Back
+                <button class="btn waves-effect waves-light" type="button" name="back">@lang('message.go_back')
                     <i class="material-icons left">arrow_back</i>
                 </button>
             </a>
-          <button class="btn waves-effect waves-light" type="button" name="update" onclick="prompt_alert_update({{$user->id}},'Are you sure?','Do you really want to update this user?','User updated successfully!','User are not updated','{{route('user.index')}}')">Update User
+          <button class="btn waves-effect waves-light" type="button" name="update" onclick="prompt_alert_update({{$user->id}},'@lang('message.are_you_sure')','@lang('message.will_you_update')','@lang('message.user_updated')','User are not updated','{{route('user.index')}}')">@lang('message.update_user')
             <i class="material-icons right">update</i>
           </button>
         </div>
     </div>
     <div class="col m6">
-        <img src="/{{$user->profile}}" alt="{{$user->title}}'s thumbnail" id="view_profile">
+        <img src="/storage/{{$user->profile}}" alt="{{$user->title}}'s thumbnail" id="view_profile">
     </div>
   </form>
 </div>

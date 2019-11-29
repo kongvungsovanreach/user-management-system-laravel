@@ -1,8 +1,17 @@
 /* MASTER PAGE STYLE */
+@import url(https://fonts.googleapis.com/css?family=Hanuman);
+
+*{
+    font-family: 'Hanuman', serif;
+}
+
+input[type=text], button {
+    font-family: 'Hanuman', serif;
+}
+
 #logo-text {
     padding-left: 25px;
     font-weight: bold;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .page-footer {
@@ -11,6 +20,17 @@
 
 #footer-div {
     background-color: #ee6e73 ;
+}
+
+.img-flag {
+    width: 40px;
+    height: 25px;
+    margin: 20px 0 0 0;
+}
+
+#flag-link {
+    padding-right: 0px;
+    background-color: transparent;
 }
 
 
@@ -76,8 +96,8 @@ body {
 /* VIEW PAGE CSS STYLE */
 
 #view_profile {
-    height: 320px;
-    width: 320px;
+    height: 450px;
+    width: 450px;
     border: 2px solid black;
     border-radius: 50%;
     margin: 10px 0;
