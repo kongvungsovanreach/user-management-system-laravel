@@ -64,7 +64,7 @@
     }
 
     function pick_image(input) {
-      var profile = document.querySelector('img');
+      var profile = document.querySelector('#view_profile');
       var reader = new FileReader();
       reader.onloadend = function () {
         profile.src = reader.result;

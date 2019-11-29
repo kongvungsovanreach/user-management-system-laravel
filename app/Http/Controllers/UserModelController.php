@@ -30,10 +30,9 @@ class UserModelController extends Controller
         $profile = FileUploadController::uploadSingleFile($request->file("profile"));;
         $user = new UserModel();
         $user->fill($request->all());
-        $user -> profile = str_replace("public/uploads", "", $profile);
-        echo $user -> profile;
-        // $user -> save();
-        // return redirect()->route("user.index");
+        $user -> profile = str_replace("public/", "", $profile);
+        $user -> save();
+        return redirect()->route("user.index");
     }
 
     function delete($id){
@@ -59,7 +58,7 @@ class UserModelController extends Controller
             $dbUser = UserModel::find($id);
             $dbUser->fill($request->except("profile"));
             $profile = FileUploadController::uploadSingleFile($file);
-            $dbUser-> profile = $profile;
+            $dbUser-> profile = str_replace("public/", "", $profile);;
             $dbUser->save();
         }
         return redirect()->route("user.index");
