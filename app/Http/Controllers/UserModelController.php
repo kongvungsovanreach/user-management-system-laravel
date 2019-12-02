@@ -80,6 +80,7 @@ class UserModelController extends Controller
         }
         else {
             $users = UserModel::where($filter,"like","%".$keyword."%")->wherebetween("created_at",[$startDate, $endDate])->paginate(5);
+            $users->count();
             $count = UserModel::where($filter,"like","%".$keyword."%")->wherebetween("created_at",[$startDate, $endDate])->get()->count();
         }
         $filters = $this->filters;
