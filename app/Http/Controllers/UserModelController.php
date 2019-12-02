@@ -65,6 +65,7 @@ class UserModelController extends Controller
     }
 
     function search(Request $request){
+       
         $startDate = $request->start_date;
         $endDate = $request->end_date;
         $keyword = $request->keyword;
@@ -98,4 +99,19 @@ class UserModelController extends Controller
         \Session::put("locale", "en");
         return redirect()->back();
     }
+
+
+    // AJAX PAGINATION CONTROLLER
+    function ajax_index(Request $request){
+        $users = UserModel::paginate(7);
+        $count = UserModel::all()->count();
+        $filters = $this->filters;
+        $filter = "name";
+        if($request->ajax()){
+            return view("ajax.index-table", compact("users","count"));
+        }
+        return view("ajax.index", compact("users","filters", "filter", "count"));
+    }
+
+
 }
