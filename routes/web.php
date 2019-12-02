@@ -11,3 +11,7 @@ Route::put("/update/{id}", "UserModelController@updateAction")->name("user.updat
 Route::get("/search", "UserModelController@search")->name("user.search");
 Route::get("/khmer", "UserModelController@khmer");
 Route::get("/english", "UserModelController@english");
+
+// AJAX ROUTE
+
+Route::get("/ajax/index", "UserModelController@ajax_index")->name("user.ajax.pagination");
