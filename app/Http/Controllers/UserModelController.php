@@ -65,6 +65,7 @@ class UserModelController extends Controller
     }
 
     function search(Request $request){
+       
         $startDate = $request->start_date;
         $endDate = $request->end_date;
         $keyword = $request->keyword;
