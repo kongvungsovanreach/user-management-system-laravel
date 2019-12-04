@@ -87,14 +87,17 @@ class UserModelController extends Controller
     }
 
     function khmer(){
-        \App::setLocale("kh");
-        \Session::put("locale", "kh");
+        \App::setlocale("kh");
+        \Session::put("locale","kh");
         return redirect()->back();
     }
 
     function english(){
-        \App::setLocale("en");
-        \Session::put("locale", "en");
+        \App::setlocale("en");
+        \Session::put("locale","en");
         return redirect()->back();
     }
+
 }
+
+
