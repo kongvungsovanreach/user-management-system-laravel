@@ -28,7 +28,6 @@
         title: title,
         text: subtitle,
         icon: "warning",
-        buttons: true,
         dangerMode: true,
         buttons: ['@lang('message.cancel')', '@lang('message.yes')'],
       })
@@ -36,6 +35,7 @@
           if (willDelete) {
             swal(success, {
               icon: "success",
+              buttons: false,
             });
             window.location.href = url;
           }
