@@ -13,5 +13,13 @@ Route::get("/khmer", "UserModelController@khmer");
 Route::get("/english", "UserModelController@english");
 
 // AJAX ROUTE
-
 Route::get("/ajax/index", "UserModelController@ajax_index")->name("user.ajax.pagination");
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get("/logout", "UserModelController@logoutGet")->name("logout");
+
+
+//ADMIN ROUTE
+Route::group(["prefix"=>"admin", "middleware"=>["auth.admin", "auth"]], function(){
+    Route::get("home", "AdminController@index");
+});

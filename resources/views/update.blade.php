@@ -9,14 +9,29 @@
         <div class="input-field">
           <i class="material-icons prefix">subtitles</i>
           <input type="text" name="name" value="{{$user->name}}">
+          <label for="title">@lang('message.name')
+            @if($errors->has("name"))
+              <span class="error">{{$errors->first('name')}}</span>
+            @endif
+          </label>
         </div>
         <div class="input-field">
           <i class="material-icons prefix">email</i>
           <input type="text" name="email"  value="{{$user->email}}">
+          <label for="description">@lang('message.email')
+            @if($errors->has("email"))
+              <span class="error">{{$errors->first('email')}}</span>
+            @endif
+          </label>
         </div>
         <div class="input-field">
           <i class="material-icons prefix">phone</i>
           <input type="text" name="phone_number"  value="{{$user->phone_number}}">
+          <label for="author">@lang('message.phone_number')
+            @if($errors->has("phone_number"))
+              <span class="error">{{$errors->first('phone_number')}}</span>
+            @endif
+          </label>
         </div>
         <div class="file-field input-field">
             

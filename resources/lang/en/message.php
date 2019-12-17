@@ -33,6 +33,10 @@
         "cancel"=>"Cancel",
         "user_deleted"=>"User was deleted successfully!",
         "user_updated"=>"User was updated successfully!",
+        "for_admin"=>"for ADMIN",
+        "login"=>"Login",
+        "logout"=>"Logout",
+        "required"=>"Cannot be empty!",
 
 
 

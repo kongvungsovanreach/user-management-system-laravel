@@ -32,6 +32,9 @@ input[type=text], button {
     padding-right: 0px;
     background-color: transparent;
 }
+#admin {
+    color: purple;
+}
 
 
 /* GLOBAL CSS STYLE */
@@ -45,10 +48,12 @@ body {
     flex-direction: column;
   }
 
-  main {
+main {
     flex: 1 0 auto;
   }
-
+.error {
+    color: red;
+}
 
 /* INDEX PAGE CSS STYLE */
 #top_div {

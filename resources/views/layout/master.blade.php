@@ -85,12 +85,17 @@
     <div class="row">
       <nav class="col m10 offset-m1">
         <div class="nav-wrapper">
-          <a href="/" class="brand-logo" id="logo-text">@lang('message.ums')</a>
+          <a href="/" class="brand-logo" id="logo-text">@lang('message.ums')@hasrole(["admin"]) <span id="admin">@lang('message.for_admin')</span> @endhasrole</a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="/">@lang('message.home')</a></li>
             <li><a href="{{route('user.deleteAll')}}">@lang('message.delete_all')</a></li>
             <li><a href="/contactUs">@lang('message.contact_us')</a></li>
             <li><a href="/aboutUs">@lang('message.about_us')</a></li>
+            @if(Auth::check())
+              <li><a href="/logout">@lang("message.logout")</a></li>
+            @else
+            <li><a href="/login">@lang("message.login")</a></li>
+            @endif
             <li><a href="/khmer" id="flag-link">
                 <img src="/image/cambodia.png" alt="" class="img-flag">
               </a>

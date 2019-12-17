@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\InsertRequest;
+use App\Http\Requests\UpdateRequest;
 use Illuminate\Http\Request;
 use App\UserModel;
+use Auth;
 
 class UserModelController extends Controller
 {   
@@ -26,7 +29,7 @@ class UserModelController extends Controller
         return view("insert");
     }
 
-    function insertAction(Request $request){
+    function insertAction(InsertRequest $request){
         $profile = FileUploadController::uploadSingleFile($request->file("profile"));;
         $user = new UserModel();
         $user->fill($request->all());
@@ -50,7 +53,7 @@ class UserModelController extends Controller
         return view("update", compact("user"));
     }
 
-    function updateAction(Request $request, $id){
+    function updateAction(UpdateRequest $request, $id){
         $file = $request->file("profile");
         if($file==""){
             UserModel::find($id)->update($request->except("profile"));
@@ -98,6 +101,11 @@ class UserModelController extends Controller
         \App::setLocale("en");
         \Session::put("locale", "en");
         return redirect()->back();
+    }
+
+    public function logoutGet(){
+        Auth::logout();
+        return redirect()->route("user.index");
     }
 
 
