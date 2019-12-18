@@ -23,3 +23,10 @@ Route::get("/logout", "UserModelController@logoutGet")->name("logout");
 Route::group(["prefix"=>"admin", "middleware"=>["auth.admin", "auth"]], function(){
     Route::get("home", "AdminController@index");
 });
+
+//UPDATE USING AJAX TESTING
+Route::get("/ajax/update", "HomeController@update");
+
+//CUSTOM LOGIN ROUTE
+Route::get("/customloginform", "CustomLoginController@customLoginForm");
+Route::post("/customloginaction", "CustomLoginController@customLoginAction");
