@@ -45,7 +45,7 @@ class APIController extends APIBaseController
             $profile = FileUploadController::uploadSingleFile($file);
             $dbUser-> profile = str_replace("public/", "", $profile);;
             $dbUser->save();
-            return $this->sendResponse($a, "success");
+            return $this->sendResponse($dbUser, "success");
         }
         
     }
